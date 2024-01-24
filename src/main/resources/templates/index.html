@@ -1,0 +1,27 @@
+<div th:switch="${items}">
+    <h2 th:case="null">no items</h2>
+    <div th:case="*">
+        <h2>Items</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Last updated</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.price}"></td>
+                <td th:text="${item.lastUpdated}"></td>
+                <td><a th:href="@{/edit/{id}(id=${item.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signup">Add a new user</a></p>
+</div>
